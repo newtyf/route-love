@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Crown, Star } from "lucide-react";
+import { Check, Crown, Heart } from "lucide-react";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { useDate } from "@/store/use-date";
 import { useHeartsModal } from "@/store/use-hearts-modal";
 
-type LessonButtonProps = {
+type StepButtonProps = {
   id: number;
   index: number;
   data: object;
@@ -19,14 +19,14 @@ type LessonButtonProps = {
   percentage: number;
 };
 
-export const LessonButton = ({
+export const StepButton = ({
   index,
   data,
   totalCount,
   locked,
   current,
   percentage,
-}: LessonButtonProps) => {
+}: StepButtonProps) => {
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
 
@@ -43,7 +43,7 @@ export const LessonButton = ({
   const isLast = index === totalCount;
   const isCompleted = !current && !locked;
 
-  const Icon = isCompleted ? Check : isLast ? Crown : Star;
+  const Icon = isCompleted ? Check : isLast ? Crown : Heart;
 
   const {open} = useHeartsModal();
   const {set} = useDate();

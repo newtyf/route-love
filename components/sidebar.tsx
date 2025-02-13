@@ -18,7 +18,7 @@ export const Sidebar = ({ className, param }: SidebarProps) => {
         className
       )}
     >
-      <Link href="/">
+      <Link href="#">
         <div className="flex items-center gap-x-3 pb-7 pl-4 pt-8">
           <Image src="/love-icon.png" alt="Mascot" height={40} width={40} />
 

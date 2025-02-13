@@ -10,7 +10,6 @@ export const couples = sqliteTable("couples", {
 
 export const dates  = sqliteTable("dates", {
   id: integer("id").primaryKey(),
-  name: text("name"),
   date: text("date"),
   title: text("title"),
   description: text("description"),

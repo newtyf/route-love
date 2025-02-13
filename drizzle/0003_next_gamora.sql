@@ -1,0 +1,1 @@
+ALTER TABLE `dates` DROP COLUMN `name`;

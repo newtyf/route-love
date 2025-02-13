@@ -1,7 +1,7 @@
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { getDatesByUsername } from "@/db/queries";
 
-import { LessonButton } from "../lesson-button";
+import { StepButton } from "../step-button";
 
 type RouteIdPageProps = {
   params: {
@@ -24,12 +24,12 @@ const page = async ({ params }: RouteIdPageProps) => {
               dates && (
                 <div key={date.id} className="mb-10">
                   <div className="relative flex flex-col items-center">
-                    <LessonButton
+                    <StepButton
                       key={date.id}
                       id={date.id}
                       data={date}
                       index={i}
-                      current={!date.isViewed}
+                      current={!date.isViewed && !date.isLocked}
                       locked={date.isLocked!}
                       percentage={100}
                     />

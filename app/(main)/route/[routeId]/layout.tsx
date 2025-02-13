@@ -13,7 +13,7 @@ interface MainLayoutProps {
 const MainLayout = ({ children, params }: MainLayoutProps) => {
   return (
     <>
-      <MobileHeader />
+      <MobileHeader param={params.routeId} />
       <Sidebar className="hidden lg:flex" param={params.routeId} />
       <main className="h-full pt-[50px] lg:pl-[256px] lg:pt-0">
         <div className="mx-auto h-full max-w-[1056px] pt-6">{children}</div>

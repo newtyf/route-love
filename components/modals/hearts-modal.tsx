@@ -15,7 +15,10 @@ import { useHeartsModal } from "@/store/use-hearts-modal";
 
 export const HeartsModal = () => {
   const { isOpen, close } = useHeartsModal();
-  const {data} = useDate();
+  const { data } = useDate();
+
+  const images = data.media ? (data.media.split(",").length > 3 ? data.media.split(",") : ["/", "/", "/"] ) : ["/", "/", "/"]
+
   const onClick = () => {
     close();
   };
@@ -24,21 +27,30 @@ export const HeartsModal = () => {
     <Dialog open={isOpen} onOpenChange={close}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <div className="mb-5 flex w-full items-center justify-center">
-            <Image
-              src={data.media}
-              alt="media"
-              height={80}
-              width={80}
-            />
+          <div className="absolute -top-28 mb-5 flex w-full items-center justify-center">
+            <div className="-rotate-6 bg-gray-300 p-2 pb-6">
+              <Image src={images[0]} alt="media" height={130} width={110} />
+            </div>
+            <div className="mb-10 bg-gray-300 p-2 pb-6">
+              <Image src={images[1]} alt="media" height={130} width={110} />
+            </div>
+
+            <div className="rotate-6 bg-gray-300 p-2 pb-6">
+              <Image
+                src={images[2]}
+                alt="media"
+                height={130}
+                width={120}
+              />
+            </div>
           </div>
 
-          <DialogTitle className="text-center text-2xl font-bold">
-            {data.name}
+          <DialogTitle className="pt-16 text-center text-2xl font-bold">
+            {data.title}
           </DialogTitle>
 
           <DialogDescription className="text-center text-base">
-          {data.description}
+            {data.description}
           </DialogDescription>
         </DialogHeader>
 
