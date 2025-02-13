@@ -5,15 +5,14 @@ import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
 import "react-circular-progressbar/dist/styles.css";
-import { useHeartsModal } from "@/store/use-hearts-modal";
 import { useDate } from "@/store/use-date";
+import { useHeartsModal } from "@/store/use-hearts-modal";
 
 type LessonButtonProps = {
   id: number;
   index: number;
-  data: {};
+  data: object;
   totalCount?: number;
   locked?: boolean;
   current?: boolean;
@@ -21,7 +20,6 @@ type LessonButtonProps = {
 };
 
 export const LessonButton = ({
-  id,
   index,
   data,
   totalCount,
@@ -46,8 +44,6 @@ export const LessonButton = ({
   const isCompleted = !current && !locked;
 
   const Icon = isCompleted ? Check : isLast ? Crown : Star;
-
-  const href = isCompleted ? `/lesson/${id}` : "/lesson";
 
   const {open} = useHeartsModal();
   const {set} = useDate();

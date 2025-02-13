@@ -1,7 +1,7 @@
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { getDatesByUsername } from "@/db/queries";
+
 import { LessonButton } from "../lesson-button";
-import { UnitBanner } from "../unit-banner";
 
 type RouteIdPageProps = {
   params: {
@@ -26,7 +26,7 @@ const page = async ({ params }: RouteIdPageProps) => {
                   <div className="relative flex flex-col items-center">
                     <LessonButton
                       key={date.id}
-                      id={date.id!}
+                      id={date.id}
                       data={date}
                       index={i}
                       current={!date.isViewed}

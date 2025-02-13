@@ -1,5 +1,4 @@
-import { relations } from "drizzle-orm";
-import { blob, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const couples = sqliteTable("couples", {
   id: integer("id").primaryKey(),

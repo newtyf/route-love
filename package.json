@@ -1,6 +1,6 @@
 {
-  "name": "duolingo-clone",
-  "version": "1.0.1",
+  "name": "route-love",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -15,11 +15,11 @@
     "db:generate": "npx drizzle-kit studio"
   },
   "author": {
-    "name": "Sanidhya Kumar Verma",
-    "email": "sanidhya.verma12345@gmail.com",
-    "url": "https://github.com/sanidhyy"
+    "name": "Newtyf",
+    "email": "axel@newtyf.com",
+    "url": "https://github.com/newtyf"
   },
-  "description": "Interactive platform for language learning with lessons, quizzes, and progress tracking.",
+  "description": "Interactive platform for share the route of the love with our favorite person",
   "keywords": [
     "reactjs",
     "nextjs",
@@ -58,23 +58,8 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sanidhyy/duolingo-clone.git"
+    "url": "https://github.com/newtyf/route-love.git"
   },
-  "homepage": "https://github.com/sanidhyy/duolingo-clone#readme",
-  "bugs": {
-    "url": "https://github.com/sanidhyy/duolingo-clone/issues",
-    "email": "sanidhya.verma12345@gmail.com"
-  },
-  "funding": [
-    {
-      "type": "patreon",
-      "url": "https://www.patreon.com/sanidhy"
-    },
-    {
-      "type": "Buy me a coffee",
-      "url": "https://www.buymeacoffee.com/sanidhy"
-    }
-  ],
   "dependencies": {
     "@libsql/client": "^0.14.0",
     "@radix-ui/react-avatar": "^1.0.4",

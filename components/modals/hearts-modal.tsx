@@ -10,8 +10,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useHeartsModal } from "@/store/use-hearts-modal";
 import { useDate } from "@/store/use-date";
+import { useHeartsModal } from "@/store/use-hearts-modal";
 
 export const HeartsModal = () => {
   const { isOpen, close } = useHeartsModal();
