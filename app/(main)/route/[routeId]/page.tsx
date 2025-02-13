@@ -1,8 +1,8 @@
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { getDatesByUsername } from "@/db/queries";
 
-import { StepButton } from "../step-button";
 import { ResetButton } from "../reset-button";
+import { StepButton } from "../step-button";
 
 type RouteIdPageProps = {
   params: {
@@ -35,6 +35,7 @@ const page = async ({ params }: RouteIdPageProps) => {
                       key={date.id}
                       id={date.id}
                       data={date}
+                      date={date.date!}
                       index={i}
                       current={!date.isViewed && !date.isLocked}
                       locked={date.isLocked!}

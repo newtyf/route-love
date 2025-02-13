@@ -3,33 +3,35 @@
 import { Check, Crown, Heart } from "lucide-react";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
+import { updateStep } from "@/actions/udapte-date";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import "react-circular-progressbar/dist/styles.css";
 import { useDate } from "@/store/use-date";
 import { useHeartsModal } from "@/store/use-hearts-modal";
-import { updateStep } from "@/actions/udapte-date";
 
 type StepButtonProps = {
   id: number;
   index: number;
-  data: any;
+  data: object;
+  date: string;
   totalCount?: number;
   locked?: boolean;
   current?: boolean;
   percentage: number;
-  routeId: string
+  routeId: string;
 };
 
 export const StepButton = ({
   id,
   index,
   data,
+  date,
   totalCount,
   locked,
   current,
   percentage,
-  routeId
+  routeId,
 }: StepButtonProps) => {
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
@@ -49,20 +51,20 @@ export const StepButton = ({
 
   const Icon = isCompleted ? Check : isLast ? Crown : Heart;
 
-  const {open} = useHeartsModal();
-  const {set} = useDate();
+  const { open } = useHeartsModal();
+  const { set } = useDate();
 
   const handleClickStep = async () => {
-    open()
-    set(data)
+    open();
+    set(data);
     if (!isCompleted) {
-      await updateStep(id, routeId)
+      await updateStep(id, routeId);
     }
-  }
+  };
 
   return (
     <a
-      onClick={handleClickStep}
+      onClick={() => handleClickStep}
       style={{ pointerEvents: locked ? "none" : "auto" }}
     >
       <div
@@ -74,8 +76,8 @@ export const StepButton = ({
       >
         {current ? (
           <div className="relative h-[102px] w-[102px]">
-            <div className="absolute -top-6 -left-6 z-10 animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 font-bold uppercase tracking-wide text-red-500 text-center w-[150px]">
-              {data.date || 'Start'}
+            <div className="absolute -left-6 -top-6 z-10 w-[150px] animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 text-center font-bold uppercase tracking-wide text-red-500">
+              {date || "Start"}
               <div
                 className="absolute -bottom-2 left-1/2 h-0 w-0 -translate-x-1/2 transform border-x-8 border-t-8 border-x-transparent"
                 aria-hidden

@@ -1,9 +1,11 @@
 'use client'
+import React from "react";
+
+import { RotateCcw } from "lucide-react";
+
 import { restartSteps } from "@/actions/udapte-date";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { RotateCcw } from "lucide-react";
-import React from "react";
 
 type ResetButtonProps = {
   routeId: string;
@@ -17,7 +19,7 @@ export const ResetButton = ({ coupleId, routeId }: ResetButtonProps) => {
 
   return (
     <Button
-      onClick={handleReset}
+      onClick={() => handleReset}
       size="rounded"
       variant="danger"
       className="h-[35px] w-[35px] border-b-8"
