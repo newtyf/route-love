@@ -1,6 +1,5 @@
 "use server";
 
-import { auth, currentUser } from "@clerk/nextjs";
 import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -10,24 +9,22 @@ import db from "@/db/drizzle";
 import {
   getCourseById,
   getUserProgress,
-  getUserSubscription,
 } from "@/db/queries";
-import { challengeProgress, challenges, userProgress } from "@/db/schema";
+import { userProgress } from "@/db/schema";
 
 export const upsertUserProgress = async (courseId: number) => {
-  const { userId } = auth();
-  const user = await currentUser();
+  const userId = "user_123";
 
-  if (!userId || !user) throw new Error("Unauthorized.");
+  if (!userId) throw new Error("Unauthorized.");
 
-  const course = await getCourseById(courseId);
+  const course = getCourseById(courseId);
 
   if (!course) throw new Error("Course not found.");
 
-  if (!course.units.length || !course.units[0].lessons.length)
+  if (!course.lessons.length)
     throw new Error("Course is empty.");
 
-  const existingUserProgress = await getUserProgress();
+  const existingUserProgress = getUserProgress();
 
   if (existingUserProgress) {
     await db
@@ -40,8 +37,8 @@ export const upsertUserProgress = async (courseId: number) => {
       .where(eq(userProgress.userId, userId));
 
     revalidatePath("/courses");
-    revalidatePath("/learn");
-    redirect("/learn");
+    revalidatePath("/route");
+    redirect("/route");
   }
 
   await db.insert(userProgress).values({

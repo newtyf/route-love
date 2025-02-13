@@ -1,5 +1,3 @@
-import { ClerkLoading, ClerkLoaded, UserButton } from "@clerk/nextjs";
-import { Loader } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,9 +7,10 @@ import { SidebarItem } from "./sidebar-item";
 
 type SidebarProps = {
   className?: string;
+  param?: string;
 };
 
-export const Sidebar = ({ className }: SidebarProps) => {
+export const Sidebar = ({ className, param }: SidebarProps) => {
   return (
     <div
       className={cn(
@@ -19,40 +18,18 @@ export const Sidebar = ({ className }: SidebarProps) => {
         className
       )}
     >
-      <Link href="/learn">
+      <Link href="/">
         <div className="flex items-center gap-x-3 pb-7 pl-4 pt-8">
-          <Image src="/mascot.svg" alt="Mascot" height={40} width={40} />
+          <Image src="/love-icon.png" alt="Mascot" height={40} width={40} />
 
-          <h1 className="text-2xl font-extrabold tracking-wide text-green-600">
-            Lingo
+          <h1 className="text-2xl font-extrabold tracking-wide text-red-600">
+            Route Love
           </h1>
         </div>
       </Link>
 
       <div className="flex flex-1 flex-col gap-y-2">
-        <SidebarItem label="Learn" href="/learn" iconSrc="/learn.svg" />
-        <SidebarItem
-          label="Leaderboard"
-          href="/leaderboard"
-          iconSrc="/leaderboard.svg"
-        />
-        <SidebarItem label="Quests" href="/quests" iconSrc="/quests.svg" />
-        <SidebarItem label="Shop" href="/shop" iconSrc="/shop.svg" />
-      </div>
-
-      <div className="p-4">
-        <ClerkLoading>
-          <Loader className="h-5 w-5 animate-spin text-muted-foreground" />
-        </ClerkLoading>
-
-        <ClerkLoaded>
-          <UserButton
-            afterSignOutUrl="/"
-            appearance={{
-              elements: { userButtonPopoverCard: { pointerEvents: "initial" } },
-            }}
-          />
-        </ClerkLoaded>
+        <SidebarItem label="Our house" href={"/route/"+param} iconSrc="/learn.svg" />
       </div>
     </div>
   );

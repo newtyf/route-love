@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1739395423664,
+      "tag": "0000_parallel_blindfold",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1739398576015,
+      "tag": "0001_nosy_dust",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1739417060257,
+      "tag": "0002_real_vulture",
+      "breakpoints": true
+    }
+  ]
+}

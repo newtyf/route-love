@@ -4,8 +4,9 @@ export {};
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      // neon db uri
+      // turso db uri
       DATABASE_URL: string;
+      DATABASE_AUTH_TOKEN: string;
 
       // stripe api key and webhook
       STRIPE_API_SECRET_KEY: string;
