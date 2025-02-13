@@ -1,5 +1,7 @@
 "use client";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+
+import { CldImage } from "next-cloudinary";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +19,18 @@ export const HeartsModal = () => {
   const { isOpen, close } = useHeartsModal();
   const { data } = useDate();
 
-  const images = data.media ? (data.media.split(",").length > 3 ? data.media.split(",") : ["/", "/", "/"] ) : ["/", "/", "/"]
+  const [images, setImages] = useState<string[]>([]);
+
+  useEffect(() => {
+    const images =
+      data.media.length > 0
+        ? data.media.split(",").length === 3
+          ? data.media.split(",")
+          : ["", "", ""]
+        : ["", "", ""];
+
+    setImages(images);
+  }, [data]);
 
   const onClick = () => {
     close();
@@ -29,15 +42,25 @@ export const HeartsModal = () => {
         <DialogHeader>
           <div className="absolute -top-28 mb-5 flex w-full items-center justify-center">
             <div className="-rotate-6 bg-gray-300 p-2 pb-6">
-              <Image src={images[0]} alt="media" height={130} width={110} />
+              <CldImage
+                src={images[0] || "cld-sample-5"}
+                alt="media"
+                height={130}
+                width={110}
+              />
             </div>
             <div className="mb-10 bg-gray-300 p-2 pb-6">
-              <Image src={images[1]} alt="media" height={130} width={110} />
+              <CldImage
+                src={images[1] || "cld-sample-5"}
+                alt="media"
+                height={130}
+                width={110}
+              />
             </div>
 
             <div className="rotate-6 bg-gray-300 p-2 pb-6">
-              <Image
-                src={images[2]}
+              <CldImage
+                src={images[2] || "cld-sample-5"}
                 alt="media"
                 height={130}
                 width={120}
@@ -45,8 +68,10 @@ export const HeartsModal = () => {
             </div>
           </div>
 
-          <DialogTitle className="pt-16 text-center text-2xl font-bold">
+          <DialogTitle className="pt-28 text-center text-2xl font-bold">
             {data.title}
+            <br />
+            <span>{data.date}</span>
           </DialogTitle>
 
           <DialogDescription className="text-center text-base">

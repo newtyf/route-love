@@ -8,24 +8,28 @@ import { cn } from "@/lib/utils";
 import "react-circular-progressbar/dist/styles.css";
 import { useDate } from "@/store/use-date";
 import { useHeartsModal } from "@/store/use-hearts-modal";
+import { updateStep } from "@/actions/udapte-date";
 
 type StepButtonProps = {
   id: number;
   index: number;
-  data: object;
+  data: any;
   totalCount?: number;
   locked?: boolean;
   current?: boolean;
   percentage: number;
+  routeId: string
 };
 
 export const StepButton = ({
+  id,
   index,
   data,
   totalCount,
   locked,
   current,
   percentage,
+  routeId
 }: StepButtonProps) => {
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
@@ -48,12 +52,17 @@ export const StepButton = ({
   const {open} = useHeartsModal();
   const {set} = useDate();
 
+  const handleClickStep = async () => {
+    open()
+    set(data)
+    if (!isCompleted) {
+      await updateStep(id, routeId)
+    }
+  }
+
   return (
     <a
-      onClick={() => {
-        open()
-        set(data)
-      }}
+      onClick={handleClickStep}
       style={{ pointerEvents: locked ? "none" : "auto" }}
     >
       <div
@@ -65,8 +74,8 @@ export const StepButton = ({
       >
         {current ? (
           <div className="relative h-[102px] w-[102px]">
-            <div className="absolute -top-6 left-2.5 z-10 animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 font-bold uppercase tracking-wide text-red-500">
-              Start
+            <div className="absolute -top-6 -left-6 z-10 animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 font-bold uppercase tracking-wide text-red-500 text-center w-[150px]">
+              {data.date || 'Start'}
               <div
                 className="absolute -bottom-2 left-1/2 h-0 w-0 -translate-x-1/2 transform border-x-8 border-t-8 border-x-transparent"
                 aria-hidden

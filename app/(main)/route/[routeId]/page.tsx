@@ -2,6 +2,7 @@ import { FeedWrapper } from "@/components/feed-wrapper";
 import { getDatesByUsername } from "@/db/queries";
 
 import { StepButton } from "../step-button";
+import { ResetButton } from "../reset-button";
 
 type RouteIdPageProps = {
   params: {
@@ -18,6 +19,12 @@ const page = async ({ params }: RouteIdPageProps) => {
     <>
       <FeedWrapper>
         {/* <UnitBanner title="HOLA" description="XD" /> */}
+        <div className="ml-4">
+          <ResetButton
+            coupleId={dates![0].couple_id}
+            routeId={params.routeId}
+          />
+        </div>
         {dates &&
           dates.map(
             (date, i) =>
@@ -31,7 +38,9 @@ const page = async ({ params }: RouteIdPageProps) => {
                       index={i}
                       current={!date.isViewed && !date.isLocked}
                       locked={date.isLocked!}
+                      totalCount={dates.length - 1}
                       percentage={100}
+                      routeId={params.routeId}
                     />
                   </div>
                 </div>
