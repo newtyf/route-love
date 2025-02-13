@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const siteConfig: Metadata = {
-  title: "Lingo",
+  title: "Route Love",
   description:
-    "Interactive platform for language learning with lessons, quizzes, and progress tracking.",
+    "Interactive platform for share the route of the love with our favorite person",
   keywords: [
     "reactjs",
     "nextjs",
