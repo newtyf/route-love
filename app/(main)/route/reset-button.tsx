@@ -13,13 +13,13 @@ type ResetButtonProps = {
 };
 
 export const ResetButton = ({ coupleId, routeId }: ResetButtonProps) => {
-  const handleReset = async () => {
-    await restartSteps(coupleId, routeId);
+  const handleReset = () => {
+    restartSteps(coupleId, routeId).catch(() => {})
   };
 
   return (
     <Button
-      onClick={() => handleReset}
+      onClick={handleReset}
       size="rounded"
       variant="danger"
       className="h-[35px] w-[35px] border-b-8"

@@ -54,17 +54,17 @@ export const StepButton = ({
   const { open } = useHeartsModal();
   const { set } = useDate();
 
-  const handleClickStep = async () => {
+  const handleClickStep = () => {
     open();
     set(data);
     if (!isCompleted) {
-      await updateStep(id, routeId);
+      updateStep(id, routeId).catch(() => {})
     }
   };
 
   return (
     <a
-      onClick={() => handleClickStep}
+      onClick={handleClickStep}
       style={{ pointerEvents: locked ? "none" : "auto" }}
     >
       <div
