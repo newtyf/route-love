@@ -1,5 +1,5 @@
 import { FeedWrapper } from "@/components/feed-wrapper";
-import { getDatesByUsername } from "@/db/queries";
+import { getDatesByUsername, getUserByUsername } from "@/db/queries";
 
 import { ResetButton } from "../reset-button";
 import { StepButton } from "../step-button";
@@ -12,8 +12,9 @@ type RouteIdPageProps = {
 
 const page = async ({ params }: RouteIdPageProps) => {
   const datesData = getDatesByUsername(params.routeId);
+  const coupleData = getUserByUsername(params.routeId);
 
-  const [dates] = await Promise.all([datesData]);
+  const [dates, couple] = await Promise.all([datesData, coupleData]);
 
   return (
     <>
@@ -34,7 +35,7 @@ const page = async ({ params }: RouteIdPageProps) => {
                     <StepButton
                       key={date.id}
                       id={date.id}
-                      data={date}
+                      data={{...date, whatsapp: couple?.whatsapp}}
                       date={date.date!}
                       index={i}
                       current={!date.isViewed && !date.isLocked}

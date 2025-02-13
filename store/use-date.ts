@@ -5,6 +5,7 @@ type DateState = {
     title : string;
     name : string;
     date : string;
+    whatsapp: string;
     description : string;
     media : string;
     isViewed: string;
@@ -18,6 +19,7 @@ export const useDate = create<DateState>((set) => ({
     title: "",
     name: "",
     date: "",
+    whatsapp: "",
     description : "",
     media : "",
     isViewed: "",

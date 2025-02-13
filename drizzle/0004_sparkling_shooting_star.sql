@@ -1,0 +1,1 @@
+ALTER TABLE `couples` ADD `whatsapp` text DEFAULT 'User' NOT NULL;

@@ -4,6 +4,7 @@ export const couples = sqliteTable("couples", {
   id: integer("id").primaryKey(),
   username: text("username").notNull().default("User"),
   password: text("password").notNull().default("User"),
+  whatsapp: text("whatsapp").notNull().default("User"),
   created_at: text("created_at", { mode: "text"}),
   updated_at: text("updated_at", { mode: "text"}),
 });
