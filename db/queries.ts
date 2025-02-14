@@ -17,7 +17,7 @@ const getDatesByUsername = async (username: string) => {
     .select()
     .from(dates)
     .where(eq(dates.couple_id, coupleId))
-    .orderBy(asc(dates.date));
+    .orderBy(asc(dates.id));
 
   return data;
 };
