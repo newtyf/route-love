@@ -14,7 +14,7 @@ type StepButtonProps = {
   id: number;
   index: number;
   data: object;
-  date: string;
+  date: Date;
   totalCount?: number;
   locked?: boolean;
   current?: boolean;
@@ -77,7 +77,7 @@ export const StepButton = ({
         {current ? (
           <div className="relative h-[102px] w-[102px]">
             <div className="absolute -left-6 -top-6 z-10 w-[150px] animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 text-center font-bold uppercase tracking-wide text-red-500">
-              {date || "Start"}
+              {date.toLocaleDateString() || "Start"}
               <div
                 className="absolute -bottom-2 left-1/2 h-0 w-0 -translate-x-1/2 transform border-x-8 border-t-8 border-x-transparent"
                 aria-hidden

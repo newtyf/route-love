@@ -90,7 +90,7 @@ export const HeartsModal = () => {
           <DialogTitle className="pt-28 text-center text-2xl font-bold">
             {data.title}
             <br />
-            <span>{data.date}</span>
+            <span>{data.date.toLocaleDateString()}</span>
           </DialogTitle>
 
           <DialogDescription className="text-center text-base">

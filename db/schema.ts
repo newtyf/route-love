@@ -5,20 +5,20 @@ export const couples = sqliteTable("couples", {
   username: text("username").notNull().default("User"),
   password: text("password").notNull().default("User"),
   whatsapp: text("whatsapp").notNull().default("User"),
-  created_at: text("created_at", { mode: "text"}),
-  updated_at: text("updated_at", { mode: "text"}),
+  created_at: integer("created_at", { mode: "timestamp"}),
+  updated_at: integer("updated_at", { mode: "timestamp"}),
 });
 
 export const dates  = sqliteTable("dates", {
   id: integer("id").primaryKey(),
-  date: text("date"),
+  date: integer("date", {mode: "timestamp"}),
   title: text("title"),
   description: text("description"),
   media: text("media"),
   isViewed: integer("isViewed", {mode: "boolean"}),
   isLocked: integer("isLocked", {mode: "boolean"}),
-  created_at: text("created_at", { mode: "text"}),
-  updated_at: text("updated_at", { mode: "text"}),
+  created_at: integer("created_at", { mode: "timestamp"}),
+  updated_at: integer("updated_at", { mode: "timestamp"}),
   couple_id: integer("couple_id").notNull().references(() => couples.id),
 })
 

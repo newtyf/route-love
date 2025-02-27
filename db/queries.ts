@@ -5,19 +5,21 @@ import { couples, dates } from "./schema";
 
 const getDatesByUsername = async (username: string) => {
   const couple = await db
-    .select()
-    .from(couples)
-    .where(eq(couples.username, username));
+  .select()
+  .from(couples)
+  .where(eq(couples.username, username));
 
   if (!couple.length) return null;
 
   const coupleId = Number(couple[0].id);
 
   const data = await db
-    .select()
-    .from(dates)
-    .where(eq(dates.couple_id, coupleId))
-    .orderBy(asc(dates.id));
+  .select()
+  .from(dates)
+  .where(eq(dates.couple_id, coupleId))
+  .orderBy(asc(dates.date)).limit(1000);
+
+  console.log(data);
 
   return data;
 };
